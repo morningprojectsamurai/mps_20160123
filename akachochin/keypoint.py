@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- encoding:utf-8 -*-
 from PIL import Image
 import numpy as np
 from matplotlib import pyplot as plt
@@ -13,7 +15,7 @@ def extract_keypoints(octave, threshold):
 
 
 if __name__ == '__main__':
-    lena_img = Image.open('img/char.jpg').convert('L')
+    lena_img = Image.open('img/lena.jpg').convert('L')
     lena_img = np.array(lena_img, dtype=np.float) / 255
 
     print('Create Scale-space')

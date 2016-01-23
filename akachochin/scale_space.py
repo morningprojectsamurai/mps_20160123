@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- encoding:utf-8 -*-
 from PIL import Image
 import numpy as np
 from scipy.ndimage.filters import gaussian_filter
@@ -6,7 +8,7 @@ from matplotlib import pyplot as plt
 
 class ScaleSpace(list):
     def __init__(self, orig_image, sigma=1.6, s=3, extra=3, min_width=32, min_height=32, *args):
-        super().__init__(*args)
+        list.__init__(self,*args)
         self.sigma = 1.6
         self.s = 3
         self.k = self._calc_k(self.s)
