@@ -17,7 +17,7 @@ def dog(scale_space):
 
 if __name__ == '__main__':
     lena_img = Image.open('img/lena.jpg').convert('L')
-    lena_img = np.array(lena_img, dtype=np.float) / 255
+    lena_img = np.array(lena_img, dtype=np.float) / 255.0
 
     print('Create Scale-space')
     scale_space = ScaleSpace(lena_img)
