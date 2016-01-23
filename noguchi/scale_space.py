@@ -37,7 +37,7 @@ class ScaleSpace(list):
 
 
 if __name__ == '__main__':
-    lena_img = Image.open('img/lena.jpg').convert('L')
+    lena_img = Image.open('img/lena.png').convert('L')
     lena_img = np.array(lena_img, dtype=np.float) / 255
 
     scale_space = ScaleSpace(lena_img)
@@ -45,6 +45,6 @@ if __name__ == '__main__':
 
     f, ax = plt.subplots(len(scale_space), len(scale_space[0]))
     for i in range(len(scale_space)):
-        for j in range(len(scale_space[0])):
+        for j in range(len(scale_space[i])):
             ax[i][j].imshow(scale_space[i][j], cmap='Greys_r')
     plt.show()
