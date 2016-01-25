@@ -28,18 +28,18 @@ def extract_keypoints(octave, threshold):
                 rng = octave[k][i-1:i+2,j-1:j+2]
 
                 # 極大を判定
-                if isLocalMax(v, rng) and v > np.max(v_prev, v_next):
+                if isLocalMax(v, rng) and v > np.max([v_prev, v_next]):
                     keypoints.append([i,j])
 
                 # 極小を判定
-                if isLocalMin(v, rng) and v < np.min(v_prev, v_next):
+                if isLocalMin(v, rng) and v < np.min([v_prev, v_next]):
                     keypoints.append([i,j])
 
     return keypoints
 
 # (画像内の)極大値かを判定
 def isLocalMax(target, rng):
-    r = rng
+    r = np.array(rng)
     r[1][1] = -1 # 自分自身はmaxから除外する
     max_value = np.max(r)
     if target > max_value:
@@ -49,7 +49,7 @@ def isLocalMax(target, rng):
 
 # (画像内の)極小値かを判定
 def isLocalMin(target, rng):
-    r = rng
+    r = np.array(rng)
     r[1][1] = 101 # 自分自身はminから除外する
     min_value = np.min(r)
     if target < min_value:
@@ -71,7 +71,7 @@ if __name__ == '__main__':
     keypoint_space = []
     for octave in dog_space:
         keypoint_space.append([])
-        keypoint_space[-1].append(extract_keypoints(octave, 0.0003))
+        keypoint_space[-1].append(extract_keypoints(octave, 0.003))
 
     print('Draw keypoints')
     plt.imshow(lena_img, cmap='Greys_r')
