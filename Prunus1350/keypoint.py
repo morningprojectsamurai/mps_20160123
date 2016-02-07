@@ -11,34 +11,9 @@ def extract_keypoints(octave, threshold):
     for i in range(1, octave.shape[0]-1):
         for x in range(1, octave[i].shape[0]-1):
             for y in range(1, octave[i].shape[1]-1):
-                v = [
-                    octave[i-1][x-1][y-1],                
-                    octave[i-1][x-1][y],                
-                    octave[i-1][x-1][y+1],                
-                    octave[i-1][x][y-1],                
-                    octave[i-1][x][y],                
-                    octave[i-1][x][y+1],                
-                    octave[i-1][x+1][y-1],                
-                    octave[i-1][x+1][y],                
-                    octave[i-1][x+1][y+1],                
-                    octave[i][x-1][y-1],                
-                    octave[i][x-1][y],                
-                    octave[i][x-1][y+1],                
-                    octave[i][x][y-1],                
-                    octave[i][x][y],                
-                    octave[i][x][y+1],                
-                    octave[i][x+1][y-1],                
-                    octave[i][x+1][y],                
-                    octave[i][x+1][y+1],                
-                    octave[i+1][x-1][y-1],                
-                    octave[i+1][x-1][y],                
-                    octave[i+1][x-1][y+1],                
-                    octave[i+1][x][y-1],                
-                    octave[i+1][x][y],                
-                    octave[i+1][x][y+1],                
-                    octave[i+1][x+1][y-1],                
-                    octave[i+1][x+1][y],                
-                    octave[i+1][x+1][y+1]                
+                v = [octave[i+a][x+b][y+c] for a in [-1, 0, 1]
+                                           for b in [-1, 0 ,1]
+                                           for c in [-1, 0 ,1]
                 ]
                 check_v = octave[i][x][y]
                 max_v = max(v)
